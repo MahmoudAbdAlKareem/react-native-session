@@ -1,8 +1,16 @@
 import React from 'react';
-import Demo from './src/ComponentsDemo/Demo';
+import {NavigationContainer} from '@react-navigation/native';
+import {NativeBaseProvider} from 'native-base';
+import Routes from './routes';
 
 const App = () => {
-  return <Demo />;
+  return (
+    <NativeBaseProvider>
+      <NavigationContainer>
+        <Routes />
+      </NavigationContainer>
+    </NativeBaseProvider>
+  );
 };
 
 export default App;
