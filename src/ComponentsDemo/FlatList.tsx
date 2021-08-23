@@ -7,21 +7,14 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
-
-const DATA = [
-  {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'First Item',
-  },
-  {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    title: 'Second Item',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Third Item',
-  },
-];
+import 'react-native-get-random-values';
+import {v4 as uuidv4} from 'uuid';
+const items = Array.from({length: 100}).map((v, i) => {
+  return {
+    id: uuidv4(),
+    title: `Item - ${i}`,
+  };
+});
 
 const Item = ({title}) => (
   <View style={styles.item}>
@@ -35,7 +28,7 @@ const App = () => {
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        data={DATA}
+        data={items}
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />
