@@ -4,6 +4,7 @@ import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import ComponentsDemo from "./ComponentsDemo/Routes";
+import APIsDemo from "./APIsDemo/Routes";
 
 const Stack = createNativeStackNavigator();
 
@@ -13,7 +14,7 @@ const Landing = () => {
     <Box p={10}>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate("Components Demo");
+          navigation.navigate("ComponentsDemo");
         }}>
         <HStack alignItems="center" justifyContent="space-between">
           <Text fontSize="lg">Components Demo</Text>
@@ -45,11 +46,18 @@ export const Demos = () => {
         component={Landing}
       />
       <Stack.Screen
-        name="Components Demo"
+        name="ComponentsDemo"
         options={{
           headerShown: false
         }}
         component={ComponentsDemo}
+      />
+      <Stack.Screen
+        name="APIsDemo"
+        options={{
+          headerShown: false
+        }}
+        component={APIsDemo}
       />
     </Stack.Navigator>
   );

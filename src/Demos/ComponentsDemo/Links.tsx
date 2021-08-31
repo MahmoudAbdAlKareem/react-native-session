@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Center, Heading, VStack } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 
-const Demo = () => {
+const Links = () => {
   const navigation = useNavigation();
 
   return (
@@ -12,7 +12,7 @@ const Demo = () => {
         <Button
           variant="ghost"
           size="lg"
-          onPress={() => navigation.navigate('Button')}>
+          onPress={() => navigation.navigate("Button")}>
           Buttons
         </Button>
       </Center>
@@ -60,4 +60,4 @@ const Demo = () => {
   );
 };
 
-export default Demo;
+export default Links;
