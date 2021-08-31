@@ -1,20 +1,17 @@
-import React from 'react';
-import {
-  Button,
-  Demo,
-  FlatList,
-  Image,
-  Text,
-  TouchableOpacity,
-  TextInput,
-} from './index';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import React from "react";
+import { Button, Demo, FlatList, Image, Text, TextInput, TouchableOpacity } from "./index";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 const Stack = createNativeStackNavigator();
 
 const Routes = () => {
   return (
-    <Stack.Navigator initialRouteName="Demo">
-      <Stack.Screen name="Demo" component={Demo} />
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false
+      }}
+      initialRouteName="Components Demo">
+      <Stack.Screen name="Components Demo" component={Demo} />
       <Stack.Screen name="TouchableOpacity" component={TouchableOpacity} />
       <Stack.Screen name="Button" component={Button} />
       <Stack.Screen name="FlatList" component={FlatList} />

@@ -1,6 +1,6 @@
-import React from 'react';
-import {Button, Center, Heading, VStack} from 'native-base';
-import {useNavigation} from '@react-navigation/native';
+import React from "react";
+import { Button, Center, Heading, VStack } from "native-base";
+import { useNavigation } from "@react-navigation/native";
 
 const Demo = () => {
   const navigation = useNavigation();

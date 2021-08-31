@@ -1,22 +1,16 @@
-import React from 'react';
-import {
-  SafeAreaView,
-  View,
-  FlatList,
-  StyleSheet,
-  Text,
-  StatusBar,
-} from 'react-native';
-import 'react-native-get-random-values';
-import {v4 as uuidv4} from 'uuid';
-const items = Array.from({length: 100}).map((v, i) => {
+import React from "react";
+import { FlatList, SafeAreaView, StatusBar, StyleSheet, Text, View } from "react-native";
+import "react-native-get-random-values";
+import { v4 as uuidv4 } from "uuid";
+
+const items = Array.from({ length: 100 }).map((v, i) => {
   return {
     id: uuidv4(),
-    title: `Item - ${i}`,
+    title: `Item - ${i}`
   };
 });
 
-const Item = ({title}) => (
+const Item = ({ title }) => (
   <View style={styles.item}>
     <Text style={styles.title}>{title}</Text>
   </View>

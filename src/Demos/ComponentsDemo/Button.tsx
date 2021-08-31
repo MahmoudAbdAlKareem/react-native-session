@@ -1,12 +1,5 @@
-import React from 'react';
-import {
-  StyleSheet,
-  Button,
-  View,
-  SafeAreaView,
-  Text,
-  Alert,
-} from 'react-native';
+import React from "react";
+import { Alert, Button, SafeAreaView, StyleSheet, Text, View } from "react-native";
 
 const Separator = () => <View style={styles.separator} />;
 

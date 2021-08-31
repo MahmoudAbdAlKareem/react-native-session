@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
-import {Text, StyleSheet} from 'react-native';
+import React, { useState } from "react";
+import { StyleSheet, Text } from "react-native";
 
 const TextInANest = () => {
   const [titleText, setTitleText] = useState("Bird's Nest");
-  const bodyText = 'This is not really a bird nest.';
+  const bodyText = "This is not really a bird nest.";
 
   const onPressTitle = () => {
     setTitleText("Bird's Nest [pressed]");

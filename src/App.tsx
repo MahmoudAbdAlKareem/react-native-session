@@ -1,14 +1,13 @@
-import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {NativeBaseProvider} from 'native-base';
-import Routes from './routes';
-import Home from "./components/Home";
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { NativeBaseProvider } from "native-base";
+import Routes from "./routes";
 
 const App = () => {
   return (
     <NativeBaseProvider>
       <NavigationContainer>
-        <Home />
+        <Routes />
       </NavigationContainer>
     </NativeBaseProvider>
   );
