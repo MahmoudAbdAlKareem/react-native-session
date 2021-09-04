@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, Text } from "react-native";
 
 const TextInANest = () => {
-  const [titleText, setTitleText] = useState("Bird's Nest");
+  const [titleText, setTitleText] = useState("Bird's Nest123");
   const bodyText = "This is not really a bird nest.";
 
   const onPressTitle = () => {

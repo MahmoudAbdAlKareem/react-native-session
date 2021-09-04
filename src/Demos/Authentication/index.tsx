@@ -5,10 +5,10 @@ import { createStackNavigator } from "@react-navigation/stack";
 const Stack = createStackNavigator();
 const AuthContext = React.createContext();
 
-function SplashScreen() {
+function LoadingScreen({ title }) {
   return (
     <View>
-      <Text>Loading...</Text>
+      <Text>{title}</Text>
     </View>
   );
 }
@@ -62,6 +62,7 @@ export default function App({ navigation }) {
           return {
             ...prevState,
             isSignout: false,
+            isSigningIn: false,
             userToken: action.token
           };
         case "SIGN_OUT":
@@ -70,10 +71,16 @@ export default function App({ navigation }) {
             isSignout: true,
             userToken: null
           };
+        case "SIGNING_IN":
+          return {
+            ...prevState,
+            isSigningIn: true
+          };
       }
     },
     {
       isLoading: true,
+      isSigningIn: false,
       isSignout: false,
       userToken: null
     }
@@ -90,6 +97,7 @@ export default function App({ navigation }) {
       } catch (e) {
         // Restoring token failed
       }
+      await new Promise(resolve => setTimeout(resolve, 5000));
 
       // After restoring token, we may need to validate it in production apps
 
@@ -108,7 +116,8 @@ export default function App({ navigation }) {
         // We will also need to handle errors if sign in failed
         // After getting token, we need to persist the token using `SecureStore` or any other encrypted storage
         // In the example, we'll use a dummy token
-
+        dispatch({ type: "SIGNING_IN" });
+        await new Promise(resolve => setTimeout(resolve, 3000));
         dispatch({ type: "SIGN_IN", token: "dummy-auth-token" });
       },
       signOut: () => dispatch({ type: "SIGN_OUT" }),
@@ -126,10 +135,24 @@ export default function App({ navigation }) {
 
   return (
     <AuthContext.Provider value={authContext}>
-      <Stack.Navigator>
-        {state.isLoading ? (
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false
+        }}>
+        {state.isLoading || state.isSigningIn ? (
           // We haven't finished checking for the token yet
-          <Stack.Screen name="Splash" component={SplashScreen} />
+          <Stack.Screen name="Splash">
+            {props => (
+              <LoadingScreen
+                {...props}
+                title={
+                  state.isLoading
+                    ? "Checking & verifying local storage token..."
+                    : "Signing In User...Please wait"
+                }
+              />
+            )}
+          </Stack.Screen>
         ) : state.userToken == null ? (
           // No token found, user isn't signed in
           <Stack.Screen
